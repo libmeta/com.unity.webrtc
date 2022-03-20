@@ -34,6 +34,12 @@ public:
     {
         m_trackSource = UnityVideoTrackSource::Create(false, absl::nullopt);
         m_trackSource->AddOrUpdateSink(&mock_sink_, rtc::VideoSinkWants());
+
+        EXPECT_NE(nullptr, device());
+
+        ContextDependecies dependencies;
+        dependencies.device = device();
+        context = std::make_unique<Context>(dependencies);
     }
     ~VideoTrackSourceTest() override
     {

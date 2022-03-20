@@ -29,6 +29,12 @@ namespace webrtc
             m_callback = &OnFrameSizeChange;
             m_renderer = std::make_unique<UnityVideoRenderer>(1, m_callback, true);
             m_trackSource->AddOrUpdateSink(m_renderer.get(), rtc::VideoSinkWants());
+
+            EXPECT_NE(nullptr, device());
+
+            ContextDependecies dependencies;
+            dependencies.device = device();
+            context = std::make_unique<Context>(dependencies);
         }
         ~VideoRendererTest() override { m_trackSource->RemoveSink(m_renderer.get()); }
 
