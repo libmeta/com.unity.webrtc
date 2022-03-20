@@ -42,8 +42,7 @@ namespace webrtc
     {
     public:
         
-        explicit Context(
-            IGraphicsDevice* gfxDevice = nullptr);
+        explicit Context(IGraphicsDevice* gfxDevice);
         ~Context();
 
         bool ExistsRefPtr(const rtc::RefCountInterface* ptr) {
