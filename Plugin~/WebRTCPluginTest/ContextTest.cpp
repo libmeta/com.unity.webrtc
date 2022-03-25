@@ -32,7 +32,7 @@ protected:
         : container_(CreateGraphicsDeviceContainer(GetParam()))
         , device_(container_->device())
     {
-        ContextDependecies dependencies;
+        ContextDependencies dependencies;
         dependencies.device = container_->device();
         dependencies.profiler = nullptr; 
         context = std::make_unique<Context>(dependencies);
