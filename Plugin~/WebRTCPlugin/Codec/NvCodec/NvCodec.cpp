@@ -109,6 +109,10 @@ namespace webrtc
                 CreateH264Format(webrtc::H264Profile::kProfileMain, webrtc::H264Level::kLevel5_1, "1"),
             };
         }
+        for (auto format : supportedFormats)
+        {
+            format.parameters.insert(std::make_pair("vendor", "nvidia"));
+        }
 
         return supportedFormats;
     }
