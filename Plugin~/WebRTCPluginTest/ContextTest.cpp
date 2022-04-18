@@ -47,8 +47,9 @@ protected:
         if (!texture)
             GTEST_SKIP() << "The graphics driver cannot create a texture resource.";
 
-
-        context = std::make_unique<Context>(device_);
+        ContextDependencies dependencies;
+        dependencies.device = device_;
+        context = std::make_unique<Context>(dependencies);
     }
 
     static void OnFrameSizeChange(UnityVideoRenderer* renderer, int width, int height)

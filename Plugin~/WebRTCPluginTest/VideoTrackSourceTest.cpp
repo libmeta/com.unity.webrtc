@@ -52,8 +52,12 @@ protected:
             GTEST_SKIP() << "The graphics driver is not installed on the device.";
 
         m_texture.reset(device()->CreateDefaultTextureV(width, height, format()));
-        context = std::make_unique<Context>(device());
+
+        ContextDependencies dependencies;
+        dependencies.device = device();
+        context = std::make_unique<Context>(dependencies);
     }
+
     std::unique_ptr<Context> context;
     std::unique_ptr<ITexture2D> m_texture;
 
