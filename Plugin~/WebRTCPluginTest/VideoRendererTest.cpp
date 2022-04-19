@@ -58,11 +58,6 @@ namespace webrtc
 
         static void OnFrameSizeChange(UnityVideoRenderer* renderer, int width, int height) { }
 
-        void SendTestFrame(int width, int height)
-        {
-            // auto builder = CreateBlackFrameBuilder(width, height);
-            m_trackSource->OnFrameCaptured(0);
-        }
     };
 
     TEST_P(VideoRendererTest, SetAndGetFrameBuffer)
@@ -72,16 +67,6 @@ namespace webrtc
         EXPECT_EQ(nullptr, m_renderer->GetFrameBuffer());
         auto builder = CreateBlackFrameBuilder(width, height);
         m_renderer->OnFrame(builder.build());
-        EXPECT_NE(nullptr, m_renderer->GetFrameBuffer());
-    }
-
-    // todo(kazuki)
-    TEST_P(VideoRendererTest, DISABLED_SendTestFrame)
-    {
-        int width = 256;
-        int height = 256;
-        EXPECT_EQ(nullptr, m_renderer->GetFrameBuffer());
-        SendTestFrame(width, height);
         EXPECT_NE(nullptr, m_renderer->GetFrameBuffer());
     }
 
