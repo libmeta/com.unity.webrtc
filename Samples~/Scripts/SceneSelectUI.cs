@@ -56,6 +56,7 @@ namespace Unity.WebRTC.Samples
         [SerializeField] private Button buttonBandwidth;
         [SerializeField] private Button buttonPerfectNegotiation;
         [SerializeField] private Button buttonLatency;
+        [SerializeField] private Button buttonSample;
 
         List<Vector2Int> streamSizeList = new List<Vector2Int>()
         {
@@ -137,6 +138,8 @@ namespace Unity.WebRTC.Samples
             buttonBandwidth.onClick.AddListener(OnPressedBandwidthButton);
             buttonPerfectNegotiation.onClick.AddListener(OnPressedPerfectNegotiationButton);
             buttonLatency.onClick.AddListener(OnPressedLatencyButton);
+
+            buttonSample.onClick.AddListener((() => SceneManager.LoadScene("SampleScene", LoadSceneMode.Single)));
 
             // This sample uses Compute Shader, so almost Android devices don't work correctly.
             if (!SystemInfo.supportsComputeShaders)
